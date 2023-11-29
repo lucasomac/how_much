@@ -14,7 +14,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
+      title: 'How much time? ❤️',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -34,20 +35,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _startDate = DateTime(2023, 1, 2, 0, 0, 0);
-  final _actualDate = DateTime.now();
+  final DateTime _startDate = DateTime(2023, 1, 2, 0, 0, 0);
   Duration difference = Duration.zero;
 
   void _setTime() {
     setState(() {
-      difference = _actualDate.difference(_startDate);
+      difference = DateTime.now().difference(_startDate);
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    wh
-    Timer.periodic(const Duration(seconds: 1), (timer) {
+    Timer.periodic(const Duration(seconds: 0), (timer) {
       _setTime();
     });
     return Scaffold(
