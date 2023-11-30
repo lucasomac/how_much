@@ -36,11 +36,14 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final DateTime _startDate = DateTime(2023, 1, 2, 0, 0, 0);
-  Duration difference = Duration.zero;
+  final DateTime _viewLoveDate = DateTime(2023, 12, 25, 14, 35, 0);
+  Duration ourTime = Duration.zero;
+  Duration whenWillSeeLoveTime = Duration.zero;
 
   void _setTime() {
     setState(() {
-      difference = DateTime.now().difference(_startDate);
+      ourTime = DateTime.now().difference(_startDate);
+      whenWillSeeLoveTime = _viewLoveDate.difference(DateTime.now());
     });
   }
 
@@ -66,10 +69,21 @@ class _MyHomePageState extends State<MyHomePage> {
               DateFormat.yMMMMd('en_US').format(_startDate),
               style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
             ),
-            Text("${difference.inDays} days"),
-            Text("${difference.inHours} hours"),
-            Text("${difference.inMinutes} minutes"),
-            Text("${difference.inSeconds} seconds"),
+            Text("${ourTime.inDays} days"),
+            Text("${ourTime.inHours} hours"),
+            Text("${ourTime.inMinutes} minutes"),
+            Text("${ourTime.inSeconds} seconds"),
+            const Text("When will I see bae?",
+              style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+            ),
+            Text(
+              DateFormat.yMMMMd('en_US').format(_viewLoveDate),
+              style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 24),
+            ),
+            Text("Missing ${whenWillSeeLoveTime.inDays} days"),
+            Text("Missing ${whenWillSeeLoveTime.inHours} hours"),
+            Text("Missing ${whenWillSeeLoveTime.inMinutes} minutes"),
+            Text("Missing ${whenWillSeeLoveTime.inSeconds} seconds"),
           ],
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
